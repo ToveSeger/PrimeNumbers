@@ -9,11 +9,47 @@
         private List<int> PrimeNumberList = new List<int>();
 
         public string PrimeNumberCheck(int number)
-        {
+        {   
             if (number <= 1) return "This is not a prime number";
             if (number % 2 == 0 && number != 2) return "This is not a prime number";
-            else PrimeNumberList.Add(number);
-            return "This is a prime number";
+            bool prime = DivideNumberWithEvenNumbers(number);
+            if(prime)
+            {
+                PrimeNumberList.Add(number);
+                return "This is a prime number";
+            }
+
+            else return "This is not a prime number";           
+        }
+
+        public bool DivideNumberWithEvenNumbers(int number)
+        {
+            bool prime=true;
+            int divideWith = 3;//kanske köra från 2?
+            double sqrRootOfNumber = Math.Sqrt(number);
+
+            while (divideWith <= sqrRootOfNumber && prime)
+            {
+                double check = number % divideWith;
+                if (number % divideWith == 0) return !prime;
+                divideWith++;
+            }
+            return prime;
+        }
+
+        
+        public bool PrimeNumberCheckBool(int number)
+        {
+            if (number <= 1) return false;
+            if (number % 2 == 0 && number != 2) return false;
+            bool prime = DivideNumberWithEvenNumbers(number);
+            if (prime)
+            {
+                PrimeNumberList.Add(number);
+                return true;
+            }
+
+            else return false;
         }
 
         public void PrintList()
@@ -24,9 +60,28 @@
             }
         }
 
-        public void AddNextPrimeNumber()
+        public void AddNextPrimeNumber() // bygg logik för om listan med tal är tom 
         {
-            int currentHighestNumber = PrimeNumberList[PrimeNumberList.Count - 1];
+            if (PrimeNumberList.Count!=0)
+            {
+                PrimeNumberList.Sort();
+                int lastListIndex = PrimeNumberList.Count - 1;
+                int currentHighestNumber = PrimeNumberList[lastListIndex];
+                int nextPrimeNumber = currentHighestNumber + 1;
+                bool isNumberprime = false;
+
+                while (!isNumberprime)
+                {
+                    isNumberprime = PrimeNumberCheckBool(nextPrimeNumber);
+                    if (!isNumberprime) nextPrimeNumber++;
+                    if (isNumberprime) PrimeNumberList.Add(nextPrimeNumber);
+                }
+
+                Console.WriteLine($"Nuvarande högsta nummer i listan är:{currentHighestNumber}");
+                Console.WriteLine($"Nästa nummer är således {nextPrimeNumber} & har adderats till listan.");
+            }
+
+            else Console.WriteLine("The list has no items, please add prime numbers first.");
         }
     }
 }
