@@ -6,11 +6,8 @@
     {
         static void Main(string[] args)
         {
-            PrimeNumberEvaluation pne = new PrimeNumberEvaluation();
-            string evaluator= pne.PrimeNumberCheck(7907);
-            Console.WriteLine(evaluator);
-            pne.PrintList();
-            pne.AddNextPrimeNumber();
+            ProgramLogic PL = new ProgramLogic();
+            PL.Menu();
         }
     }
 }

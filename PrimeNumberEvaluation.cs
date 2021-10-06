@@ -11,7 +11,6 @@
         public string PrimeNumberCheck(int number)
         {   
             if (number <= 1) return "This is not a prime number";
-            if (number % 2 == 0 && number != 2) return "This is not a prime number";
             bool prime = DivideNumberWithEvenNumbers(number);
             if(prime)
             {
@@ -25,7 +24,7 @@
         public bool DivideNumberWithEvenNumbers(int number)
         {
             bool prime=true;
-            int divideWith = 3;//kanske köra från 2?
+            int divideWith = 2;
             double sqrRootOfNumber = Math.Sqrt(number);
 
             while (divideWith <= sqrRootOfNumber && prime)
@@ -45,7 +44,7 @@
             bool prime = DivideNumberWithEvenNumbers(number);
             if (prime)
             {
-                PrimeNumberList.Add(number);
+                //PrimeNumberList.Add(number);
                 return true;
             }
 
@@ -54,13 +53,14 @@
 
         public void PrintList()
         {
+            Console.WriteLine("Your list of prime numbers:");
             for (int i = 0; i < PrimeNumberList.Count; i++)
             {
                 Console.WriteLine(PrimeNumberList[i]);
             }
         }
 
-        public void AddNextPrimeNumber() // bygg logik för om listan med tal är tom 
+        public void AddNextPrimeNumber() 
         {
             if (PrimeNumberList.Count!=0)
             {
