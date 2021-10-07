@@ -19,12 +19,12 @@
         {   
             if (number <= 1) return "This is not a prime number and has not been added to you prime number list.";
             bool prime = DivideNumber(number);
-            if(prime)
+            if (prime)
             {
                 PrimeNumberList.Add(number);
                 return "This is a prime number and has been added to your prime number list";
             }
-            else return "This is not a prime number and has not been added to you prime number list.";           
+            else return "This is not a prime number and has not been added to you prime number list.";
         }
 
         /// <summary>
@@ -62,7 +62,6 @@
             {
                 return true;
             }
-
             else return false;
         }
 
@@ -72,10 +71,7 @@
         public void PrintList()
         {
             Console.WriteLine("Your list of prime numbers:");
-            for (int i = 0; i < PrimeNumberList.Count; i++)
-            {
-                Console.WriteLine(PrimeNumberList[i]);
-            }
+            Console.WriteLine(String.Join(",", PrimeNumberList));
         }
 
         /// <summary>
