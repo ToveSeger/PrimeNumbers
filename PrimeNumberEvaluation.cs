@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    class PrimeNumberEvaluation
+    public class PrimeNumberEvaluation
     {
         //List that holds the prime numbers added by the user
         private List<int> PrimeNumberList = new List<int>();
